@@ -1,0 +1,27 @@
+<h1 class="text-2xl font-bold">Listado de Condominios</h1>
+<h3 class="text-lg">
+  Total de condominios registrados:
+  <span class="text-accent">{{ condominiumsResource.value()?.total }}</span>
+</h3>
+
+<div class="divider"></div>
+
+<div class="flex gap-2 items-center h-20">
+  <app-pagination
+    [pages]="condominiumsResource.value()?.totalPages || 0"
+    [currentPage]="paginationService.currentPage()"
+  />
+  <pagination-row-per-page
+    [selectedItemsPerPage]="condominiumsPerPage()"
+    (itemsPerPageChange)="condominiumsPerPage.set(+$event)"
+  />
+
+  <div class="flex flex-1"></div>
+
+  <button class="btn btn-primary" routerLink="/admin/condominiums/new">
+    Nuevo condominio
+  </button>
+</div>
+
+<!-- Listado -->
+<app-condominium-table [condominiums]="condominiumsResource.value()?.data ?? []" />

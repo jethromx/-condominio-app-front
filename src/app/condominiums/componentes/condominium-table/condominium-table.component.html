@@ -1,0 +1,91 @@
+<div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <th>Condominio</th>
+          <th>Dirección</th>
+          <th>Celular</th>
+          <th>Email</th>
+          <th>Info</th>
+          <th>Estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+        @for (item of condominiums(); track item._id) {
+  
+        <tr>
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <td>
+            
+            <div class="flex items-center gap-3">
+              <div class="avatar">
+                <div class="mask mask-squircle h-12 w-12">
+                  <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                </div>
+              </div>
+              <div>
+                <a
+                  [routerLink]="['/admin/condominiums', item._id]"
+                  class="font-bold hover:text-accent transition-colors duration-300"
+                  >{{ item.name }}</a
+                >
+  
+                <div class="text-sm opacity-50">
+                 {{ item.description }}
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+           {{ item.street  }} {{ item.streetNumber }} {{ item.neighborhood }}
+          </td>
+          <td>
+            {{ item.phone }}
+          </td>
+          <td>
+            {{ item.email }}
+          </td>
+          <th>
+            <a
+              [routerLink]="['/admin/condominiums', item._id]"
+              class="btn btn-ghost text-accent btn-xs"
+            >
+              Detalles
+            </a>
+          </th>
+          <th>
+            <label class="label">
+            <input type="checkbox" 
+            [checked]="item.status === 'ACTIVE'"
+            (change)="onStatusChange(item, $event.target)"
+            class="toggle toggle-primary" />
+            {{item.status == 'ACTIVE' ? 'Activo' : 'Inactivo'}}
+             </label>
+          </th>
+          <th>
+            <button
+              class="btn btn-error btn-xs"
+              (click)="onDelete(item._id)"
+              title="Eliminar"
+            >
+              <i class="fas fa-trash"></i> <!-- Ícono de Font Awesome -->
+            </button>
+          </th>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,247 @@
+<h1 class="text-2xl font-bold">{{ condominium().name }}</h1>
+<div class="divider"></div>
+
+<form
+  [formGroup]="condominiumForm"
+  class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+  (ngSubmit)="onSubmit()"
+>
+  <!-- Datos generales -->
+  <div class="flex flex-col gap-2">
+    <h2 class="text-2xl font-bold h-12">Datos generales</h2>
+    <input
+      type="text"
+      placeholder="Nombre"
+      class="input input-bordered w-full"
+      formControlName="name"
+      [class.border-red-500]="condominiumForm.get('name')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('name')!" />
+
+    <textarea 
+    type="text" 
+    formControlName="description"
+    placeholder="Descripción"
+    class="textarea textarea-primary w-full input" >
+    <form-error-label [control]="condominiumForm.get('description')!" />
+    </textarea>
+
+    <input
+      type="text"
+      placeholder="Calle"
+      class="input input-bordered w-full"
+      formControlName="street"
+      [class.border-red-500]="condominiumForm.get('street')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('street')!" />
+
+    <input
+    type="text"
+    placeholder="Número"
+    class="input input-bordered w-full"
+    formControlName="streetNumber"
+    [class.border-red-500]="condominiumForm.get('streetNumber')?.errors ?? false"
+  />
+  <form-error-label [control]="condominiumForm.get('streetNumber')!" />
+
+    <input
+      type="text"
+      placeholder="Colonia"
+      class="input input-bordered w-full"
+      formControlName="neighborhood"
+      [class.border-red-500]="condominiumForm.get('neighborhood')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('neighborhood')!" />
+
+    <input
+      type="text"
+      placeholder="Ciudad"
+      class="input input-bordered w-full"
+      formControlName="city"
+      [class.border-red-500]="condominiumForm.get('city')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('city')!" />
+
+    <input
+      type="text"
+      placeholder="Estado"
+      class="input input-bordered w-full"
+      formControlName="state"
+      [class.border-red-500]="condominiumForm.get('state')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('state')!" />
+
+    <input
+      type="text"
+      placeholder="Código Postal"
+      class="input input-bordered w-full"
+      formControlName="zipCode"
+      [class.border-red-500]="condominiumForm.get('zipCode')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('zipCode')!" />
+
+    <input
+      type="text"
+      placeholder="País"
+      class="input input-bordered w-full"
+      formControlName="country"
+      [class.border-red-500]="condominiumForm.get('country')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('country')!" />
+
+    <!-- informacion adicional -->
+    <h2 class="text-2xl font-bold h-12">Información adicional</h2>
+    <input
+      type="number"
+      placeholder="Total de Pisos"
+      class="input input-bordered w-full"
+      formControlName="totalFloors"
+      [class.border-red-500]="condominiumForm.get('totalFloors')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('totalFloors')!" />
+
+    <input
+      type="number"
+      placeholder="Total de Apartamentos"
+      class="input input-bordered w-full"
+      formControlName="totalApartments"
+      [class.border-red-500]="condominiumForm.get('totalApartments')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('totalApartments')!" />
+
+    <input
+      type="number"
+      placeholder="Total de Estacionamientos"
+      class="input input-bordered w-full"
+      formControlName="totalParkingSpaces"
+      [class.border-red-500]="condominiumForm.get('totalParkingSpaces')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('totalParkingSpaces')!" />
+
+    <input
+      type="number"
+      placeholder="Total de Bodegas"
+      class="input input-bordered w-full"
+      formControlName="totalStorageSpaces"
+      [class.border-red-500]="condominiumForm.get('totalStorageSpaces')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('totalStorageSpaces')!" />
+
+    <input
+      type="number"
+      placeholder="Total de Áreas Comunes"
+      class="input input-bordered w-full"
+      formControlName="totalCommonAreas"
+      [class.border-red-500]="condominiumForm.get('totalCommonAreas')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('totalCommonAreas')!" />
+
+
+     <!-- Amenidades-->
+     <h2 class="text-2xl font-bold h-12">Amenidades</h2>
+     <textarea
+       class="textarea textarea-bordered"
+       placeholder="Amenidades (separadas por comas)"
+       rows="4"
+       formControlName="amenities"
+       [class.border-red-500]="condominiumForm.get('amenities')?.errors ?? false"
+     ></textarea>
+     <form-error-label [control]="condominiumForm.get('amenities')!" />
+ 
+     <!-- Estatus-->
+     <h2 class="text-2xl font-bold h-12">Estatus</h2>
+     <select
+       class="select select-bordered w-full"
+       formControlName="status"
+       [class.border-red-500]="condominiumForm.get('status')?.errors ?? false"
+     >
+       <option value="ACTIVE">Activo</option>
+       <option value="INACTIVE">Inactivo</option>
+     </select>
+     <form-error-label [control]="condominiumForm.get('status')!" />
+
+  </div>
+
+  <!-- Contacto -->
+  <div class="flex flex-col gap-2">
+    <h2 class="text-2xl font-bold h-12">Contacto</h2>
+    <input
+      type="text"
+      placeholder="Teléfono"
+      class="input input-bordered w-full"
+      formControlName="phone"
+      [class.border-red-500]="condominiumForm.get('phone')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('phone')!" />
+
+    <input
+      type="email"
+      placeholder="Correo Electrónico"
+      class="input input-bordered w-full"
+      formControlName="email"
+      [class.border-red-500]="condominiumForm.get('email')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('email')!" />
+
+    <input
+      type="url"
+      placeholder="Sitio Web"
+      class="input input-bordered w-full"
+      formControlName="website"
+      [class.border-red-500]="condominiumForm.get('website')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('website')!" />
+
+    <!-- ubicacion -->
+    <h2 class="text-2xl font-bold h-12">Ubicación</h2>
+    <input
+      type="number"
+      placeholder="Latitud"
+      class="input input-bordered w-full"
+      formControlName="latitude"
+      [class.border-red-500]="condominiumForm.get('latitude')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('latitude')!" />
+
+    <input
+      type="number"
+      placeholder="Longitud"
+      class="input input-bordered w-full"
+      formControlName="longitude"
+      [class.border-red-500]="condominiumForm.get('longitude')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('longitude')!" />
+
+    <!-- imagen -->
+    <h2 class="text-2xl font-bold h-12">Imagen</h2>
+    <input
+      type="url"
+      placeholder="URL de la Imagen"
+      class="input input-bordered w-full"
+      formControlName="image"
+      [class.border-red-500]="condominiumForm.get('image')?.errors ?? false"
+    />
+    <form-error-label [control]="condominiumForm.get('image')!" />
+
+  </div>
+
+
+
+  <!-- Botón Guardar -->
+  <div class="flex justify-start h-12">
+    <button class="btn btn-secondary w-full" type="submit">
+      Guardar
+    </button>
+  </div>
+  <div class="flex justify-start h-12">
+    <button class="btn btn-info" [routerLink]="['/admin/condominiums']">
+      Regresar
+    </button>
+  </div>
+</form>
+
+@if (wasSaved()) {
+  <div class="alert alert-success fixed bottom-4 right-4 w-80 animate-fadeIn">
+    <span>Datos actualizados correctamente</span>
+  </div>
+}

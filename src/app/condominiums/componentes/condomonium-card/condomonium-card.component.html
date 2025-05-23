@@ -1,0 +1,20 @@
+<div class="card card-compact bg-base-100 shadow-xl animate-fadeIn">
+    <figure>
+      <img src="assets/10006486.png" alt="Imagen del condominio" />
+    </figure>
+    <div class="card-body">
+      <h2
+        class="card-title font-montserrat text-accent text-lg hover:underline cursor-pointer"
+        [routerLink]="['/product', condominium()._id]"
+      >
+        {{ condominium().name }}
+      </h2>
+      <p>{{ condominium().description | slice : 0 : 70 }}...</p>
+      <div class="card-actions justify-end">
+        <a class="link link-accent" [routerLink]="['/product', condominium()._id]">
+          Ver producto
+        </a>
+      </div>
+    </div>
+  </div>
+  

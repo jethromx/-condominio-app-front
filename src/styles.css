@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import  "ngx-toastr/toastr";
+@plugin "daisyui";
+
+
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/assets/fonts/Montserrat-Medium.ttf") format("truetype");
+}
+
+/* Declarar animaciones y keyframes fuera del bloque @theme */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animation-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
